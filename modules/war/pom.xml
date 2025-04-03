@@ -23,11 +23,6 @@
 		-->
 		<properties.project.GWT.version.asm>7.1</properties.project.GWT.version.asm>
 		<properties.project.GWT.version.jetty>9.2.14.v20151106</properties.project.GWT.version.jetty>
-		<properties.project.GWT.version.log4j>1.2.17</properties.project.GWT.version.log4j>
-		<properties.project.GWT.version.aspectjweaver>1.9.6</properties.project.GWT.version.aspectjweaver>
-		<version.jetty-proxy>${properties.project.GWT.version.jetty}</version.jetty-proxy>
-
-		<version.springframework>5.3.27</version.springframework>
 
 	</properties>
 
@@ -47,13 +42,6 @@
 			<!--
 			Dependency chains
 			-->
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-framework-bom</artifactId>
-				<version>${version.springframework}</version>
-				<scope>import</scope>
-				<type>pom</type>
-			</dependency>
 			<dependency>
 				<groupId>com.google.gwt</groupId>
 				<artifactId>gwt</artifactId>
@@ -76,6 +64,7 @@
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-user</artifactId>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>net.upperlimit</groupId>
@@ -107,7 +96,7 @@
 				<extensions>true</extensions>
 				<configuration>
 					<moduleName>net.upperlimit.issues.gwt_maven_plugin_176.Test</moduleName>
-					<sourceLevel>1.8</sourceLevel>
+					<sourceLevel>${maven.compiler.source}</sourceLevel>
 					<!--
 					compile
 					-->
