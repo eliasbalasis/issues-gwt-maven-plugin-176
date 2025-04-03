@@ -11,7 +11,7 @@
 
 	<artifactId>issues-gwt-maven-plugin-176.war</artifactId>
 
-	<packaging>war</packaging>
+	<packaging>gwt-app</packaging>
 
 	<properties>
 
