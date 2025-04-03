@@ -1,0 +1,83 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>net.upperlimit</groupId>
+	<artifactId>issues-gwt-maven-plugin-176</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<packaging>pom</packaging>
+
+	<properties>
+
+		<maven.deploy.skip>true</maven.deploy.skip>
+
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+
+		<version.gwt>2.9.0</version.gwt>
+		<!--
+		MUST BE COMPATIBLE WITH GWT
+		-->
+		<properties.project.GWT.version.asm>7.1</properties.project.GWT.version.asm>
+		<properties.project.GWT.version.jetty>9.2.14.v20151106</properties.project.GWT.version.jetty>
+		<properties.project.GWT.version.log4j>1.2.17</properties.project.GWT.version.log4j>
+		<properties.project.GWT.version.aspectjweaver>1.9.6</properties.project.GWT.version.aspectjweaver>
+
+		<version.springframework>5.3.27</version.springframework>
+
+	</properties>
+
+	<modules>
+		<module>modules/client</module>
+		<module>modules/war</module>
+	</modules>
+
+	<dependencyManagement>
+		<dependencies>
+			<!--
+			CLASSPATH FIX
+			for Log4J2 zero day vulnerability
+			-->
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-bom</artifactId>
+				<version>2.20.0</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<!--
+			Dependency chains
+			-->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-framework-bom</artifactId>
+				<version>${version.springframework}</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+			<dependency>
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt</artifactId>
+				<version>${version.gwt}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<!--
+			Private
+			-->
+			<dependency>
+				<groupId>net.upperlimit</groupId>
+				<artifactId>issues-gwt-maven-plugin-176.client</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.upperlimit</groupId>
+				<artifactId>issues-gwt-maven-plugin-176.client</artifactId>
+				<classifier>sources</classifier>
+				<version>${project.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+</project>
